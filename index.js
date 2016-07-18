@@ -97,7 +97,7 @@ class SettingsList extends React.Component {
   _itemView(item, index, max){
     var border = index === max-1 ? {borderWidth:0} : {borderBottomWidth:1, borderColor: this.props.borderColor};
     return (
-      <TouchableHighlight key={'item_' + index} underlayColor={item.underlayColor ? item.underlayColor : this.props.underlayColor} onPress={item.onPress}>
+      <TouchableHighlight key={'item_' + index} underlayColor={item.underlayColor ? item.underlayColor : this.props.underlayColor} onLongPress={item.onLongPress} onPress={item.onPress}>
         <View style={[styles.itemBox, {backgroundColor: item.backgroundColor ? item.backgroundColor : this.props.backgroundColor}]}>
           {item.icon}
           <View style={[styles.titleBox, border, {height:item.itemWidth ? item.itemWidth : this.props.defaultItemSize}]}>
@@ -192,6 +192,10 @@ SettingsList.Item = React.createClass({
      * Item on press callback.
      */
     onPress: React.PropTypes.func,
+    /**
+     * Item on press callback.
+     */
+    onLongPress: React.PropTypes.func,
     /**
      * Enable or disable the > arrow at the end of the setting item.
      */
